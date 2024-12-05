@@ -1,4 +1,111 @@
-.detail>div{
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1c1c;
+    color: #ffffff;
+}
+
+.detail {
+    width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+/* 상단 요약 섹션 */
+.topSection {
+    display: flex;
+    justify-content: space-around;
+    height: 4rem;
+    background-color: #333333;
+    border-radius: 8px;
+
+}
+
+.summary {
+    height: 100%;
+    flex: 1;
+    align-content: center;
+    font-size: 15px;
+    color: #cccccc;
+}
+
+.summary span {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.summary.total {
+    color: #cccccc;
+    border-bottom:solid 2px #ff4757;
+}
+
+.summary.income {
+    color: #cccccc;
+}
+
+.summary.expense {
+    color: #cccccc;
+}
+
+/* 중단 헤더 섹션 */
+.middleSection {
+    display: grid;
+    grid-template-columns: 5% 15% 20% 20% 20% 20%;
+    align-items: center;
+    background-color: #282828;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #dddddd;
+}
+
+.middleSection input[type="checkbox"] {
+    margin-left: 0.5rem;
+}
+
+/* 내역 섹션 */
+.historySection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+/* 비어있는 상태 */
+.historySection .empty-state {
+    text-align: center;
+    color: #999999;
+}
+
+.historySection .empty-state img {
+    width: 3rem;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.historySection .empty-state p {
+    font-size: 1rem;
+    color: #cccccc;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .middleSection {
+        grid-template-columns: 10% 20% 20% 20% 30%;
+        font-size: 0.8rem;
+    }
+
+    .topSection {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .summary span {
+        font-size: 1rem;
+    }
 }
