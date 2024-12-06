@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     flex:1;
+    text-align: center;
 }
 
 .cal-header-content {
@@ -79,3 +80,118 @@
 .cal-month{
     font-size: 3rem;
 }
+/* 전체 달력 div */
+.calendar-content{
+    width:95%;
+    margin: 0 auto;
+}
+
+/* CalDays Sty*/
+.days{
+    display: flex;
+    justify-content: space-around;
+}
+.colDay{
+    display: flex;
+    flex-direction: column;
+    height: 2rem;
+    flex: 1;
+    justify-content: center;
+}
+
+/* 전체 달력 스타일 */
+.body {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 행 스타일 (주 단위) */
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+/* 열 스타일 (날짜 단위) */
+.col {
+    flex: 1;
+    height: 100px; /* 각 셀의 높이 */
+    display: flex;
+    flex-direction: column; /* 날짜와 내용 수직 정렬 */
+    justify-content: flex-start; /* 날짜를 상단에 배치 */
+    align-items: flex-start; /* 날짜를 왼쪽 정렬 */
+    border: 1px solid #333333;
+    background-color: #1c1c1c;
+    position: relative;
+    padding: 0.5rem; /* 내부 여백 추가 */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 이전/다음 달 날짜 */
+.col.disabled {
+    background-color: #282828;
+    color: #555555;
+    cursor: not-allowed;
+}
+
+/* 현재 달 날짜 */
+.col.valid {
+    background-color: #1c1c1c;
+    color: #ffffff;
+}
+
+.col.valid:hover {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+/* 선택된 날짜 */
+.col.selected {
+    color: #2e8b57;
+    font-weight: bold;
+}
+
+.col.selected:hover {
+    background-color: #444444;
+}
+
+/* 오늘 날짜 강조 (선택적) */
+.col.today {
+    border: 2px solid #ff4757;
+    font-weight: bold;
+}
+
+/* 날짜 텍스트 스타일 */
+.text {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.text.not-valid {
+    color: #555555;
+    text-decoration: line-through; /* 이전/다음 달 날짜 표시 */
+}
+
+/* 날짜를 왼쪽 상단에 배치 */
+.col .text {
+    align-self: flex-start; /* 왼쪽 정렬 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .col {
+        height: 80px;
+        font-size: 0.8rem;
+    }
+
+    .text {
+        font-size: 0.9rem;
+    }
+}
+
