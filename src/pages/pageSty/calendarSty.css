@@ -1,0 +1,81 @@
+.calendar-page{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+
+.cal-header-content {
+    display: flex;
+    justify-content: flex-start;
+    padding: 2rem;
+    align-items: flex-end;
+    width: 100%;
+}
+
+/* 화살표 버튼 */
+.cal-header-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    background-color: #444444;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.cal-header-arrow:hover {
+    background-color: #555555;
+    transform: scale(1.1);
+}
+
+/* 달/월 버튼 */
+.cal-header-month {
+    padding: 0.5rem 1rem;
+    background-color: #555555;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+    margin: 0 1rem;
+}
+
+.cal-header-month:hover {
+    background-color: #666666;
+    transform: scale(1.05);
+}
+
+/* 이번달 버튼 */
+.cal-current-month-btn {
+    padding: 0.5rem 1rem;
+    background-color: #555555;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-left: 4rem;
+}
+
+.cal-current-month-btn:hover {
+    background-color: #555555;
+    transform: scale(1.05);
+}
+.change-month {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.cal-month{
+    font-size: 3rem;
+}
