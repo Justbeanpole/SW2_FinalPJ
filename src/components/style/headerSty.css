@@ -1,0 +1,22 @@
+/* 헤더 */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333333;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid #444444;
+}
+
+.menu-btn{
+    font-size: 2rem;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.account{
+    font-size: 2rem;
+    padding-right: 20px;
+    cursor: pointer;
+}
