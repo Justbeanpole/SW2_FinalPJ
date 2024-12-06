@@ -1,20 +1,11 @@
 import History from "./History";
+import InOutBtn from "./InOutBtn";
 import './style/detailsty.css'
 
 const Detail = () => {
     return (
         <div className="detail">
-            <div className="topSection">
-                <div className="summary total">
-                    전체 <span>0원</span>
-                </div>
-                <div className="summary income">
-                    수입 <span>0원</span>
-                </div>
-                <div className="summary expense">
-                    지출<span>0원</span>
-                </div>
-            </div>
+            <InOutBtn />
             <div className="middleSection">
                 <input type="checkbox"/>
                 <div>날짜</div>
