@@ -3,6 +3,7 @@
     flex-direction: column;
     flex:1;
     text-align: center;
+    margin: 0 100px;
 }
 
 .cal-header-content {
@@ -195,3 +196,43 @@
     }
 }
 
+.modal-page{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.selected-page{
+    position:fixed;
+    padding: 1rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #282828;
+    border-radius: 1rem;
+    border: 0.15rem solid #3d3f45;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.btnClose{
+    position: relative;
+    left: 47%;
+    padding-bottom: 1rem;
+    cursor: pointer;
+    color: white;
+}
+.dateCount{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+}
+.dateTotal{
+    text-align: right;
+}
