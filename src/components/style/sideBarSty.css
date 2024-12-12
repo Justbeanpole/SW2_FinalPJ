@@ -1,0 +1,127 @@
+
+/* 보이는 상태 */
+.side-bar.visible {
+    right: 0;
+}
+
+/* 전체 사이드바 */
+.side-bar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background-color: #2a2d34;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    box-sizing: border-box;
+    transition: right 0.3s ease-in-out;
+}
+
+.side-bar.visible {
+    right: 0;
+}
+
+
+
+/* 제목 */
+.title {
+    color: #fff;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+/* 탭 버튼 */
+.tab-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    background-color: #3d3f45;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.tab-button.active {
+    border: 1px solid #ff7043;
+    color: #ff7043;
+    font-weight: bold;
+}
+
+.tab-button:last-child {
+    margin-right: 0;
+}
+
+/* 폼 스타일 */
+.form-container .form-group {
+    padding-bottom: 20px;
+}
+
+.form-label {
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+.form-input input,
+.form-input select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1f2125;
+    color: #fff;
+}
+.form-input>input{
+    width: 95%;
+}
+
+.amount-input {
+    display: flex;
+    align-items: center;
+}
+
+.amount-input input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1f2125;
+    color: #fff;
+    flex: 1;
+    margin-right: 5px;
+}
+
+.amount-input span {
+    padding: 10px;
+    background-color: #3d3f45;
+    border-radius: 5px;
+}
+
+/* 버튼 스타일 */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.save-btn{
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ff7043;
+    color: #fff;
+    margin-right: 10px;
+}
