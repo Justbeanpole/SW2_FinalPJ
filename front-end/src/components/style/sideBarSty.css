@@ -72,6 +72,9 @@
     margin-bottom: 2px;
     text-align: left;
 }
+.form-input{
+    text-align: left;
+}
 
 .form-input input,
 .form-input select {
@@ -125,3 +128,8 @@
     color: #fff;
     margin-right: 10px;
 }
+
+
+
+
+

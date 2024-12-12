@@ -1,18 +1,41 @@
-import './style/sideBarSty.css'
+import React, { useState } from "react";
+import "./style/sideBarSty.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import style from "./style/datePickerSty.css";
+import {ko} from "date-fns/locale"
 
 const SideBar = ({ isOpen }) => {
+    const [selectedDay, setSelectedDay] = useState(new Date());
+    const [inOutState, setInOutState] = useState("expense");
+
     return (
         <div className={`side-bar ${isOpen ? "visible" : ""}`}>
             <h2 className="title">입력</h2>
             <div className="tab-buttons">
-                <button className="tab-button">수입</button>
-                <button className="tab-button active">지출</button>
+                <button
+                    className={`tab-button ${inOutState === "income" ? "active" : ""}`}
+                    onClick={()=>setInOutState("income")}
+                >
+                    수입</button>
+                <button
+                    className={`tab-button ${inOutState === "expense" ? "active" : ""}`}
+                    onClick={()=>setInOutState("expense")}
+                >
+                    지출</button>
             </div>
             <div className="form-container">
                 <div className="form-group">
                     <div className="form-label">날짜</div>
                     <div className="form-input">
-                        <input type="text" value="24. 12. 10." readOnly />
+                        <DatePicker
+                            selected={selectedDay}
+                            onChange={(date) => setSelectedDay(date)}
+                            locale={ko}
+                            dateFormat="yyyy. MM. dd."
+                            className="date-picker-input"
+                            calendarClassName={style}
+                        />
                     </div>
                 </div>
                 <div className="form-group">

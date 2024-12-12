@@ -1,0 +1,94 @@
+/* 전체 달력 스타일 */
+.react-datepicker {
+    background-color: #333333;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #dddddd;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.8rem;
+    width: 280px;
+}
+.react-datepicker-wrapper{
+    width: 100%;
+}
+.date-picker-input{
+    box-sizing: border-box;
+}
+
+/* 헤더 영역 */
+.react-datepicker__header {
+    background-color: #333333;
+    border-bottom: none;
+    padding-top : 1rem;
+    padding-bottom: 0;
+    color: #ffffff;
+    text-align: center;
+}
+.react-datepicker__current-month{
+    color: #fff;
+}
+.react-datepicker__navigation{
+    padding-top : 1rem;
+}
+
+/* 요일 영역 */
+.react-datepicker__day-names {
+    display: flex;
+    justify-content: space-between; /* 요일 간 간격 균등 분배 */
+    height: auto;
+    padding: 0 0.5rem; /* 좌우 여백 추가 */
+}
+
+/* 요일 이름 스타일 */
+.react-datepicker__day-name {
+    color: #999999;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 2rem; /* 요일 셀의 크기를 날짜와 동일하게 설정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 날짜 영역 */
+.react-datepicker__week {
+    display: flex;
+    justify-content: space-between; /* 날짜 간 간격 균등 분배 */
+}
+
+/* 날짜 셀 스타일 */
+.react-datepicker__day {
+    color: #dddddd;
+    width: 2rem; /* 날짜 크기 */
+    height: 2rem; /* 날짜 크기 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* 원형 스타일 */
+    margin: 0; /* 날짜 간 여백 제거 */
+    text-align: center;
+}
+
+.react-datepicker__day:hover {
+    background-color: #444444;
+}
+
+.react-datepicker__day--selected {
+    background-color: #ff4757;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.react-datepicker__day--today {
+    color: #ff4757;
+    font-weight: bold;
+    border: 1px solid #ff4757;
+    background-color: transparent;
+}
+.react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected{
+  background: none;
+}
+
+
+
