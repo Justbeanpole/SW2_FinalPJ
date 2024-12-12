@@ -53,22 +53,14 @@
 
 /* 달/월 버튼 */
 .month-btn {
-    padding: 0.5rem 1rem;
-    background-color: #555555;
-    border: 1px solid #666666;
-    border-radius: 5px;
+    padding: 0.5rem;
     font-size: 1rem;
     color: #ffffff;
-    cursor: pointer;
     font-weight: bold;
     transition: background-color 0.2s, transform 0.2s;
     margin: 0px 1rem;
 }
 
-.month-btn:hover {
-    background-color: #666666;
-    transform: scale(1.05);
-}
 
 /* 이번달 버튼 */
 .current-month-btn {
@@ -117,8 +109,36 @@
     background-color: #555555;
     transform: scale(1.05);
 }
+.search-input{
+    padding: 7px;
+    border: 2px solid #555555;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #fff;
+    margin-right: 1rem;
+    animation: fade-in 1s;
+}
 
+.fade-out{
+    animation: fade-out 1s;
+    visibility: hidden;
+}
 
-
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 
 
