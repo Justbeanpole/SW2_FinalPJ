@@ -11,12 +11,18 @@
 }
 
 .menu-btn{
+    display: flex;
     font-size: 2rem;
     padding-left: 20px;
-    cursor: pointer;
 }
 .account{
     font-size: 2rem;
     padding-right: 20px;
     cursor: pointer;
+}
+
+.title-name{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 10px;
 }
