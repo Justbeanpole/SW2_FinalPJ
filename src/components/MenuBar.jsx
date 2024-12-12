@@ -1,16 +1,51 @@
-import {Link} from "react-router-dom";
-import './style/menuSty.css'
+import {Link, useNavigate} from "react-router-dom";
+import './style/menuSty.css';
+import { useState } from "react";
 
 const MenuBar = () => {
+    /* === State ===  */
+    const [isHovering, setHovering] = useState(false);
+
+    /* === Nav ===*/
+    const navigate = useNavigate();
+
+    /* === Function === */
+    const handleMouseOver = () => {
+        setHovering(true);
+    };
+    const handleMouseOut = () => {
+        setHovering(false);
+    };
+    const handleClick = (page) => {
+        navigate(`${page}`)
+    }
+
+
+
     return (
-        <div className="menu-bar">
-            <div>내역</div>
-            <div><Link to={'/cal'}>달력</Link></div>
-            <div>자산</div>
-            <div>통계</div>
-            <div>예산</div>
-            <div>설정</div>
+        <div
+            className={isHovering ? "menu-bar grow" : "menu-bar"}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+        >
+            <div className="menu-item" onClick={()=>handleClick('/')}>
+                <span className="material-symbols-outlined">book_4</span>
+                <span className="menu-text">내역</span>
+            </div>
+            <div className="menu-item" onClick={()=>handleClick('/cal')}>
+                <span className="material-symbols-outlined">calendar_month</span>
+                <span className="menu-text">달력</span>
+            </div>
+            <div className="menu-item" onClick={()=>handleClick('/statistics')}>
+                <span className="material-symbols-outlined">monitoring</span>
+                <span className="menu-text">통계</span>
+            </div>
+            <div className="menu-item" onClick={()=>handleClick('/')}>
+                <span className="material-symbols-outlined">settings</span>
+                <span className="menu-text">설정</span>
+            </div>
         </div>
-    )
-}
+    );
+};
+
 export default MenuBar;
