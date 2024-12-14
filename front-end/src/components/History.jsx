@@ -13,14 +13,30 @@ import './style/historySty.css'
 //     )
 // }
 
-const History = () => {
+const History = ({
+                     detailId,
+                     amount,
+                     inOut,
+                     category,
+                     content,
+                     createdDate,
+                     asset,
+                     isChecked,
+                     onCheckboxChange,
+                     }) => {
     return (
         <div className="history-row">
-            <input type="checkbox" className="row-checkbox"/>
-            <div className="row-date">24. 12. 5. (목)</div>
-            <div className="row-asset">은행</div>
-            <div className="row-category">文化 문화생활</div>
-            <div className="row-amount">123,123원</div>
+            <input
+                type="checkbox"
+                className="row-checkbox"
+                checked={isChecked} // 개별 상태
+                onChange={() => onCheckboxChange(detailId)} // 상태 업데이트
+            />
+            <div className="row-date">{createdDate}</div>
+            <div className="row-asset">{asset}</div>
+            <div className="row-category">{category}</div>
+            <div className={`row-amount ${inOut === "in" ? "income" : "expense"}`}> {amount.toLocaleString()}원</div>
+            <div className="row-content">{content}</div>
         </div>
     );
 };
