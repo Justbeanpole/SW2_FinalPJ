@@ -36,6 +36,13 @@ function App() {
     useEffect(() => {setMenu(false)},[location.pathname]);
 
 
+    const [activeTab, setActiveTab] = useState('total')
+
+    const handleTabChange = (type) => {
+        setActiveTab(type)
+    }
+
+
     return (
         <div className="App">
             <div className="main-page">
@@ -43,22 +50,36 @@ function App() {
                 <div className="main-content">
                     <MenuBar/>
                     <Routes>
-                        <Route path='/' element={<MainPage
+                        <Route path='/' element={
+                            <MainPage
                             currentMonth = {currentMonth}
                             prevMonth = {prevMonth}
                             nextMonth = {nextMonth}
                             nowMonth = {nowMonth}
+                            activeTab={activeTab}
+                            handleTabChange={handleTabChange}
                         ></MainPage>}></Route>
-                        <Route path='/cal' element={<CalendarPage
+                        <Route path='/cal' element={
+                            <CalendarPage
                             currentMonth = {currentMonth}
                             prevMonth = {prevMonth}
                             nextMonth = {nextMonth}
                             nowMonth = {nowMonth}
+                            activeTab={activeTab}
+                            handleTabChange={handleTabChange}
                         ></CalendarPage>}></Route>
                         <Route path='/statistics' element={<StatisticsPage></StatisticsPage>}></Route>
                     </Routes>
                 </div>
-                    <SideBar isOpen={isOpen}></SideBar>
+                    <SideBar
+                        isOpen={isOpen}
+                        currentMonth = {currentMonth}
+                        prevMonth = {prevMonth}
+                        nextMonth = {nextMonth}
+                        nowMonth = {nowMonth}
+                        activeTab={activeTab}
+                        handleTabChange={handleTabChange}
+                    ></SideBar>
                 <div className="floating-add-btn material-symbols-outlined"
                      onClick={() => toggleBtn()}>{isOpen?"close" : "add"}</div>
             </div>
