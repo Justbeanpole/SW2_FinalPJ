@@ -3,8 +3,40 @@ import './pageSty/MP.css'
 import InOutBtn from "../components/InOutBtn";
 import {useState} from "react";
 import {format} from "date-fns";
+import data_202411 from "../dummyData/data_2024-11.json"
+import data_202412 from "../dummyData/data_2024-12.json"
+import data_202501 from "../dummyData/data_2025-01.json"
 
-const MainPage = ({currentMonth, prevMonth, nextMonth, nowMonth}) => {
+
+const MainPage = ({currentMonth, prevMonth, nextMonth, nowMonth, activeTab, handleTabChange}) => {
+    const data12 = data_202412;
+
+    //전체 합 가져오기
+    const totalCount = () => {
+        let incomeTotal = 0
+        let expenseTotal = 0
+        let total = 0
+        data12.forEach(item => {
+            item.inOut === "in" ? incomeTotal += item.amount : expenseTotal += item.amount;
+            item.inOut === "in" ? total += item.amount : total -= item.amount;
+        })
+        return {
+            total,
+            incomeTotal,
+            expenseTotal,
+        }
+    }
+
+    const [searchContent, setSearchContent] = useState("")
+    const handleSearchContent = (e) => {
+        setSearchContent(e.target.value)
+    }
+
+    const searchResHis = () => {
+        return  searchContent === ""
+            ? data12 : data12.filter((item) => item.content.includes(searchContent))
+    }
+
 
     return (
         <div className="mainSection">
@@ -13,15 +45,24 @@ const MainPage = ({currentMonth, prevMonth, nextMonth, nowMonth}) => {
                 nextMonth={nextMonth}
                 prevMonth={prevMonth}
                 nowMonth={nowMonth}
+                searchContent={searchContent}
+                handleSearchContent={handleSearchContent}
             ></TopSection>
-            <InOutBtn/>
-            <Detail></Detail>
+            <InOutBtn
+                activeTab={activeTab}
+                handleTabChange={handleTabChange}
+                totalCount={totalCount()}
+            ></InOutBtn>
+            <Detail
+                data={searchResHis()}
+                activeTab={activeTab}
+            ></Detail>
         </div>
     )
 }
 export default MainPage
 
-const TopSection = ({currentMonth, prevMonth, nextMonth, nowMonth}) => {
+const TopSection = ({currentMonth, prevMonth, nextMonth, nowMonth, searchContent, handleSearchContent}) => {
     const [openSearchInput, setOpenSearchInput] = useState(false)
 
     const handleSearchInput = () => {
@@ -51,11 +92,18 @@ const TopSection = ({currentMonth, prevMonth, nextMonth, nowMonth}) => {
             <div
                 className="btn-search"
             >
-                {openSearchInput ? <input type="text" className="search-input"/> : null}
+                {openSearchInput
+                    ? <input
+                        type="text"
+                        className="search-input"
+                        onChange={handleSearchContent}
+                        value={searchContent}
+                    /> : null}
                 <button
                     className="search-btn material-symbols-outlined"
                     onClick={handleSearchInput}
-                >search</button>
+                >search
+                </button>
             </div>
         </div>
     )
