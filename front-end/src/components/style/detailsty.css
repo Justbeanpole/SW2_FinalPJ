@@ -12,10 +12,6 @@ body {
     gap: 0.7rem;
 }
 
-
-
-
-
 /* 내역 섹션 */
 .historySection {
     flex: 1;
@@ -64,8 +60,6 @@ body {
 
 /* 중단 헤더 섹션 */
 .middleSection {
-    display: grid;
-    grid-template-columns: 5% 15% 20% 20% 20% 20%;
     align-items: center;
     background-color: #282828;
     padding: 0.8rem;
@@ -73,10 +67,22 @@ body {
     font-size: 0.9rem;
     color: #dddddd;
 }
-.middleSection>div{
+.middleSection>.category-info{
+    display: grid;
+    grid-template-columns: 5% 15% 20% 20% 20% 20%;
     user-select: none;
     cursor: pointer;
 }
+
+.selection-info{
+    display:grid;
+    grid-template-columns: 5% 15% 20% 20% 20% 20%;;
+}
+.trash-button{
+    cursor: pointer;
+}
+
+
 .activeChar {
     color: #ff4757;
     font-weight: bold;
