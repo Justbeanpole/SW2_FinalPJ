@@ -33,6 +33,14 @@
     color: #cccccc;
 }
 
+.summary.income>span {
+    color: #00B7FF;
+}
+
+.summary.expense>span {
+    color: #ff4757;
+}
+
 .underline {
     position: absolute;
     bottom: 0;
