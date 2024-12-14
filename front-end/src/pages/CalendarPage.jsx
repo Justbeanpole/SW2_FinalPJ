@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import './pageSty/calendarSty.css'
 import {format, addMonths, subMonths, formatDate} from 'date-fns';
 import {startOfMonth, endOfMonth, startOfWeek, endOfWeek} from 'date-fns';
@@ -7,20 +7,47 @@ import InOutBtn from "../components/InOutBtn";
 import Details from "../components/Detail";
 import Detail from "../components/Detail";
 import inOutBtn from "../components/InOutBtn";
+import data12 from "../dummyData/data_2024-12.json"
 
 
-const CalendarPage = ({currentMonth, nextMonth, prevMonth, nowMonth}) => {
+const CalendarPage = ({currentMonth, nextMonth, prevMonth, nowMonth, activeTab, handleTabChange}) => {
+    const data = data12;
     /* === State === */
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [clickedDate, setClickedDate] = useState(null);
 
-    const handleDateClick = (date, onOff) => {
-        setSelectedDate(date);
-        setIsModalOpen(onOff);
+    const handleDateClick = (e) => {
+        isModalOpen ? setIsModalOpen(false) : setIsModalOpen(true);
+        checkTarget(e)
     };
-    useEffect(() => {
-        // isOpenDate ?
-    })
+    const checkTarget = (e) => {
+        setClickedDate(e.currentTarget.getAttribute('data-key'))
+    }
+
+
+    //전체 합 값 가져오기
+    const calTotalCal = () => {
+        let incomeTotal = 0
+        let expenseTotal = 0
+        let total = 0
+        data.forEach(item => {
+            item.inOut === "in" ? incomeTotal += item.amount : expenseTotal += item.amount;
+            item.inOut === "in" ? total += item.amount : total -= item.amount;
+        })
+        return {
+            total,
+            incomeTotal,
+            expenseTotal,
+        }
+    }
+
+
+
+    const dateData = () => {
+        return data.filter((item) => item.createdDate === clickedDate);
+    }
+
 
     return (
         <div className="calendar-page">
@@ -33,16 +60,26 @@ const CalendarPage = ({currentMonth, nextMonth, prevMonth, nowMonth}) => {
                 ></CalHeader>
             </div>
             <div className="calendar-content">
-                <InOutBtn></InOutBtn>
+                <InOutBtn
+                    activeTab={activeTab}
+                    handleTabChange={handleTabChange}
+                    totalCount={calTotalCal()}
+                ></InOutBtn>
                 <CalDays></CalDays>
                 <CalCells
                     currentMonth={currentMonth}
                     selectedDate={selectedDate}
                     handleDateClick={handleDateClick}
+                    data = {data}
+                    activeTab={activeTab}
                 ></CalCells>
             </div>
             {isModalOpen ? <SelectedDayDetail
+                activeTab={activeTab}
+                handleTabChange={handleTabChange}
                 handleDateClick={handleDateClick}
+                data={dateData()}
+                totalCount = {()=> calTotalCal(data)}
             ></SelectedDayDetail> : null}
         </div>
     )
@@ -88,11 +125,33 @@ const CalDays = () => {
     return <div className="days row">{days}</div>;
 }
 
-const CalCells = ({currentMonth, selectedDate, handleDateClick}) => {
+
+const CalCells = ({currentMonth, selectedDate, handleDateClick, data, activeTab}) => {
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
     const endDate = endOfWeek(monthEnd);
+
+
+    const calculateDailyTotals = (cellDate) => {
+        let all = 0
+        let income =0
+        let expense = 0;
+        data.forEach((item) => {
+            const formattedDate = format(new Date(cellDate), "yyyy-MM-dd");
+            if(item["createdDate"] === formattedDate){
+                item.inOut === "in" ? income += item.amount : expense += item.amount;
+                item.inOut === "in" ? all += item.amount : all -= item.amount;
+            }
+        });
+
+        return {
+            "all" : all,
+            "income": income,
+            "expense": expense,
+        };
+    };
+
 
     const rows = [];
     let days = [];
@@ -102,6 +161,7 @@ const CalCells = ({currentMonth, selectedDate, handleDateClick}) => {
     while (day <= endDate) {
         for (let i = 0; i < 7; i++) {
             formattedDate = format(day, 'dd')
+            const dailyData = calculateDailyTotals(day);
             days.push(
                 <div className={`col cell ${
                     !isSameMonth(day, monthStart)
@@ -112,18 +172,25 @@ const CalCells = ({currentMonth, selectedDate, handleDateClick}) => {
                                 ? 'not-valid' : 'valid'
                 }`}
                      key={day}
-                     onClick={() => handleDateClick(day, true)}>
+                     data-key={format(new Date(day), "yyyy-MM-dd")}
+                     onClick={handleDateClick}>
                     <span
                         className={format(currentMonth, 'M') !== format(day, 'M')
                             ? 'text not-valid'
                             : ''}>
                         {formattedDate}
                     </span>
-                        <div className = "dateCount">
-                        <div className="dateTotal income">{0}</div>
-                        <div className="dateTotal expense">{0}</div>
-                        <div className="dateTotal all">{0}</div>
-                        </div>
+                    <div className="dateCount">
+                        {activeTab !== 'out' && dailyData.income !== 0 && (
+                            <div className="dateTotal income">{dailyData.income}</div>
+                        )}
+                        {activeTab !== 'in' &&dailyData.expense !== 0 && (
+                            <div className="dateTotal expense">{dailyData.expense}</div>
+                        )}
+                        {activeTab === 'total'&&dailyData.all !== 0 && (
+                            <div className="dateTotal all">{dailyData.all}</div>
+                        )}
+                    </div>
                 </div>
             )
             day = addDays(day, 1);
@@ -140,18 +207,39 @@ const CalCells = ({currentMonth, selectedDate, handleDateClick}) => {
     )
 }
 
-const SelectedDayDetail = ({handleDateClick}) => {
+const SelectedDayDetail = ({handleDateClick, activeTab, data, handleTabChange}) => {
+    const dateTotalCal = () => {
+        let incomeTotal = 0
+        let expenseTotal = 0
+        let total = 0
+        data.forEach(item => {
+            item.inOut === "in" ? incomeTotal += item.amount : expenseTotal += item.amount;
+            item.inOut === "in" ? total += item.amount : total -= item.amount;
+        })
+        return {
+            total,
+            incomeTotal,
+            expenseTotal,
+        }
+    }
     return (
         <div className="modal-page">
             <div className="selected-page">
                 <div
                     className="material-symbols-outlined btnClose"
-                    onClick={() => handleDateClick(null, false)}
+                    onClick={handleDateClick}
                 >
                     close
                 </div>
-                <InOutBtn></InOutBtn>
-                <Detail></Detail>
+                <InOutBtn
+                    activeTab={activeTab}
+                    handleTabChange={handleTabChange}
+                    totalCount={dateTotalCal()}
+                ></InOutBtn>
+                <Detail
+                    data={data}
+                    activeTab={activeTab}
+                ></Detail>
             </div>
         </div>
     )
