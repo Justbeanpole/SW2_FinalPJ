@@ -12,7 +12,7 @@ import {
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
-const StatisticsPage = () => {
+const StatisticsPage = ({currentMonth, prevMonth, nextMonth, nowMonth, activeTab, handleTabChange}) => {
 
     return (
         <div className="satistics-page">
@@ -32,7 +32,13 @@ const StatisticsPage = () => {
                 </div>
                 <div className="historySec">
                     <StaticLineChart></StaticLineChart>
-                    <Detail></Detail>
+                    {/*<Detail*/}
+                    {/*    data={searchResHis()}*/}
+                    {/*    activeCategory={activeCategory}*/}
+                    {/*    sortDirection={sortDirection}*/}
+                    {/*    handleActCategory={handleActCategory}*/}
+                    {/*    deterArrowDir={deterArrowDir}*/}
+                    {/*></Detail>*/}
                 </div>
             </div>
         </div>
