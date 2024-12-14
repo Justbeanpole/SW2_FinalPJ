@@ -21,7 +21,7 @@
 }
 
 /* 자산 */
-.row-asset {
+.row-asset, .row-content{
     color: #cccccc;
 }
 
@@ -33,6 +33,12 @@
 /* 금액 */
 .row-amount {
     font-weight: bold;
+}
+
+.income{
+    color: #00B7FF;
+}
+.expense {
     color: #ff4757; /* 빨간색 */
 }
 
