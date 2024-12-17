@@ -1,5 +1,5 @@
 import './pageSty/statisSty.css'
-import Detail from "../components/Detail";
+import CategoryPercent from "../components/CategoryPercent";
 import {
     Line,
     LineChart,
@@ -9,36 +9,122 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
-import React from "react";
-import { PieChart, Pie, Cell } from "recharts";
+import React, {useEffect, useState} from "react";
+import {PieChart, Pie, Cell} from "recharts";
+import {addYears, format, subYears} from "date-fns";
+import axios from "axios";
+import History from "../components/History";
 
-const StatisticsPage = ({currentMonth, prevMonth, nextMonth, nowMonth, activeTab, handleTabChange}) => {
+const StatisticsPage = ({currentMonth, setCurrentMonth, nowMonth, activeTab, handleTabChange}) => {
+    const [inOutState, setInOutState] = useState("수입");
 
+    const handleClickInout = (e) => {
+        return e.target.innerText !== inOutState
+            ? setInOutState(`${e.target.innerText}`)
+            : null
+    }
+
+
+    const nextYear = () => {
+        setCurrentMonth(addYears(currentMonth, 1));
+    }
+    const prevYear = () => {
+        setCurrentMonth(subYears(currentMonth, 1));
+    }
+    const [lineChartData, setLineChartData] = useState([]);
+    const [donutChartData, setDonutChartData] = useState([]);
+    useEffect(() => {
+        const fetchChartData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/monthlyData', {
+                    params: {
+                        userId: 1,
+                        createdDate: format(currentMonth,'yyyy-MM-dd'),
+                    }
+                })
+                const responseDonut = await axios.get('http://localhost:8080/categoryDetailsForYear', {
+                    params: {
+                        userId: 1,
+                        selectYear: currentMonth.getFullYear(),
+                    }
+                })
+                const filterData = responseDonut.data.filter((item) => !(item.income === 0 && item.expense === 0));
+                const donutData = filterData.map((item) => ({
+                    name: item.category,
+                    color: item.color,
+                    value: item.income === 0 ? item.expense : item.income,
+                    percent: item.income === 0 ? item.expensePercentage : item.incomePercentage,
+                    type : item.income === 0 ? "EXPENSE" : "INCOME"
+                }))
+                setLineChartData(response.data)
+                setDonutChartData(donutData);
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchChartData();
+
+    }, [currentMonth]);
+    //수입 지출에 따라 데이터 설정
     return (
         <div className="satistics-page">
-            <div className="inOutBtn">
-                <div>수입</div>
-                <div>지출</div>
+            <div className="header-statistics">
+                <div className="inOutBtn">
+                    <div
+                        className={inOutState === "수입" ? "act-line" : ""}
+                        onClick={handleClickInout}
+                    >수입
+                    </div>
+                    <div
+                        className={inOutState === "지출" ? "act-line" : ""}
+                        onClick={handleClickInout}
+                    >지출
+                    </div>
+                </div>
+                <div className="btn-year">
+                    <div
+                        className="material-symbols-outlined arrow-btn"
+                        onClick={prevYear}>
+                        chevron_left
+                    </div>
+                    <div className="btn month-btn">
+                        {format(currentMonth, 'yyyy')}년
+                    </div>
+                    <div
+                        className="material-symbols-outlined arrow-btn"
+                        onClick={nextYear}>
+                        chevron_right
+                    </div>
+                </div>
             </div>
+
             <div className="contentSec">
                 <div className="circleGrap">
-                    <div className="grap-sec"><DonutChart></DonutChart></div>
+                    <div className="grap-sec">
+                        <DonutChart
+                            inOutState={inOutState}
+                            data = {donutChartData.filter((item) => inOutState === "수입" ? item.type === "INCOME" : item.type === "EXPENSE")}
+                        ></DonutChart>
+                    </div>
                     <div className="catStory-sec">
                         <div className="dounot-middle">
-                            <div>지출 전체</div>
-                            <div>123,123 원</div>
+                            <div>{inOutState} 전체</div>
+                        </div>
+                        <div className="percent-list">
+                            {donutChartData.filter((item) => inOutState === "수입" ? item.type === "INCOME" : item.type === "EXPENSE").map((item) => (
+                                <CategoryPercent
+                                    {...item}
+                                />
+                            ))}
+
                         </div>
                     </div>
                 </div>
                 <div className="historySec">
-                    <StaticLineChart></StaticLineChart>
-                    {/*<Detail*/}
-                    {/*    data={searchResHis()}*/}
-                    {/*    activeCategory={activeCategory}*/}
-                    {/*    sortDirection={sortDirection}*/}
-                    {/*    handleActCategory={handleActCategory}*/}
-                    {/*    deterArrowDir={deterArrowDir}*/}
-                    {/*></Detail>*/}
+                    <StaticLineChart
+                        inOutState={inOutState}
+                        data = {lineChartData}
+                    ></StaticLineChart>
                 </div>
             </div>
         </div>
@@ -47,59 +133,55 @@ const StatisticsPage = ({currentMonth, prevMonth, nextMonth, nowMonth, activeTab
 
 export default StatisticsPage;
 
-const StaticLineChart = () => {
-    const data = [
-        { name: '1월', value: 0 },
-        { name: '2월', value: 0 },
-        { name: '3월', value: 0 },
-        { name: '4월', value: 0 },
-        { name: '5월', value: 0 },
-        { name: '6월', value: 0 },
-        { name: '7월', value: 0 },
-        { name: '8월', value: 0 },
-        { name: '9월', value: 0 },
-        { name: '10월', value: 100000 },
-        { name: '11월', value: 200000 },
-        { name: '12월', value: 150000 },
-    ];
+const StaticLineChart = ({inOutState, data}) => {
+    const formatYAxis = (value) => {
+        return `${value / 1000}K`; // 1000으로 나눈 뒤 "K" 추가
+    };
+    const formatXAxis = (value) => {
+        return `${value}월`;
+    }
     return (
         <div className="barGrap">
             <div className="grap-title">
-                <h2>지출 전체</h2>
-                <h3>123,123 원</h3>
+                <h2>{inOutState === "수입" ? "수입" : "지출"} 전체</h2>
             </div>
-                <LineChart
-                    width={1100}
-                    height={350}
-                    data={data}
-                >
-                    <CartesianGrid  stroke="#333333" />
-                    <XAxis
-                        dataKey="name"
-                        stroke="#cccccc"
-                        tick={{ fontSize: 14, fill: '#cccccc' }}
-                    />
-                    <YAxis
-                        stroke="#cccccc"
-                        tick={{ fontSize: 14, fill: '#cccccc' }}
-                    />
-                    <Tooltip
-                        contentStyle={{ backgroundColor: '#333333', border: 'none', borderRadius: '5px' }}
-                        labelStyle={{ color: '#ffffff' }}
-                        itemStyle={{ color: '#ffffff' }}
-                    />
-                    <Legend
-                        wrapperStyle={{ color: '#ffffff', fontSize: '14px' }}
-                    />
-                    <Line
-                        type="linear"
-                        dataKey="value"
-                        stroke="#ff5722"
-                        strokeWidth={3}
-                        dot={{ r: 6, strokeWidth: 2, stroke: '#ffffff', fill: '#ff5722' }}
-                        activeDot={{r: 8} }
-                    />
-                </LineChart>
+            <LineChart
+                width={1100}
+                height={350}
+                data={data}
+            >
+                <CartesianGrid stroke="#333333"/>
+                <XAxis
+                    dataKey="month"
+                    stroke="#cccccc"
+                    tick={{fontSize: 14, fill: '#cccccc'}}
+                    tickFormatter={(value) => formatXAxis(value)}
+                />
+                <YAxis
+                    stroke="#cccccc"
+                    tick={{fontSize: 14, fill: '#cccccc'}}
+                    domain={[0, (dataMax) => Math.ceil(dataMax * 1.2)]}
+                    tickFormatter={(value) => formatYAxis(value).toLocaleString()}
+                />
+                <Tooltip
+                    contentStyle={{backgroundColor: '#333333', border: 'none', borderRadius: '5px'}}
+                    labelStyle={{color: '#ffffff'}}
+                    itemStyle={{color: '#ffffff'}}
+                    formatter={(value) => value.toLocaleString()}
+                />
+                <Legend
+                    wrapperStyle={{color: '#ffffff', fontSize: '14px'}}
+                />
+                <Line
+                    type="linear"
+                    dataKey={inOutState === "수입" ? "income" : "expense"}
+                    stroke="#ff5722"
+                    strokeWidth={3}
+                    dot={{r: 6, strokeWidth: 2, stroke: '#fff', fill: '#ff5722'}}
+                    activeDot={{r: 8}}
+                    name={`월별 ${inOutState} 총합`}
+                />
+            </LineChart>
 
 
         </div>
@@ -107,18 +189,13 @@ const StaticLineChart = () => {
 }
 
 
+const DonutChart = ({inOutState, data}) => {
 
 
-
-const DonutChart = () => {
-    const data = [
-        { name: "교통/차량", value: 90000, percent: 62.98, color: "#FF7043", icon: "🚕" },
-        { name: "식비", value: 52900, percent: 37.02, color: "#FFB74D", icon: "🍜" },
-    ];
 
     const RADIAN = Math.PI / 180;
 
-    const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+    const renderCustomLabel = ({cx, cy, midAngle, innerRadius, outerRadius, percent, index}) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
         const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -130,14 +207,18 @@ const DonutChart = () => {
                 fill="white"
                 textAnchor={x > cx ? "start" : "end"}
                 dominantBaseline="central"
+                style={{userSelect: 'none'}}
             >
-                {`${(percent).toFixed(1)}%`}
+                {`${(percent)}%`}
             </text>
         );
     };
     return (
-        <div className="dounot">
-            <PieChart width={350} height={300}>
+        <div className="dounot"
+             style={{userSelect: 'none'}}
+        >
+            <PieChart
+                width={350} height={300}>
                 <Pie
                     data={data}
                     cx="50%"
@@ -150,11 +231,11 @@ const DonutChart = () => {
                     animationDuration={800}
                     animationEasing="ease-out"
                 >
-                    {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
+                    {data.map((item, index) => (
+                        <Cell key={`cell-${index}`} fill={item.color} stroke="#000"/>
                     ))}
                 </Pie>
-                <Tooltip content={<CustomTooltip data = {data}/>} />
+                <Tooltip content={<CustomTooltip data={data}/>}/>
 
             </PieChart>
 
@@ -162,9 +243,9 @@ const DonutChart = () => {
     );
 };
 
-const CustomTooltip = ({ active, payload}) => {
+const CustomTooltip = ({active, payload}) => {
     if (active && payload && payload.length) {
-        const { name, value, percent, color, icon } = payload[0].payload;
+        const {name, value, percent, color} = payload[0].payload;
 
         return (
             <div
@@ -176,12 +257,12 @@ const CustomTooltip = ({ active, payload}) => {
                     border: `1px solid ${color}`,
                     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
                     textAlign: "center",
-                    width: "150px",
+                    width: "100px",
                 }}
             >
-                <div style={{ fontSize: "20px", marginBottom: "5px" }}>{icon} {name}</div>
-                <div style={{ fontSize: "16px", marginBottom: "5px" }}>{percent.toFixed(0)}%</div>
-                <div style={{ fontSize: "18px", color: color, fontWeight: "bold" }}>
+                <div style={{fontSize: "15px", marginBottom: "5px"}}> {name}</div>
+                <div style={{fontSize: "13px", marginBottom: "5px"}}>{percent}%</div>
+                <div style={{fontSize: "12px", color: color, fontWeight: "bold"}}>
                     {value.toLocaleString()} 원
                 </div>
             </div>

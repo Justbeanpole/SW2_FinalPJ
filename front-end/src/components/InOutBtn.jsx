@@ -12,16 +12,16 @@ const InOutBtn = ({totalCount, activeTab, handleTabChange}) => {
                 원</span>
             </div>
             <div
-                className={`summary income ${activeTab === 'out' ? 'active' : ''}`}
-                onClick={() => handleTabChange("in")}
+                className={`summary income ${activeTab === 'INCOME' ? 'active' : ''}`}
+                onClick={() => handleTabChange(0)}
             >
                 수입 <span>
                 {totalCount.incomeTotal.toLocaleString()}
                 원</span>
             </div>
             <div
-                className={`summary expense ${activeTab === 'out' ? 'active' : ''}`}
-                onClick={() => handleTabChange("out")}
+                className={`summary expense ${activeTab === 'EXPENSE' ? 'active' : ''}`}
+                onClick={() => handleTabChange(1)}
             >
                 지출<span>
                 {totalCount.expenseTotal.toLocaleString()}
@@ -33,8 +33,8 @@ const InOutBtn = ({totalCount, activeTab, handleTabChange}) => {
                     transform: `translateX(${
                         activeTab === 'total'
                             ? "-100%"
-                            : activeTab === "in" ? "0%"
-                                : activeTab === "out" ? "100%"
+                            : activeTab === 0 ? "0%"
+                                : activeTab === 1 ? "100%"
                                     : "-100%"})`,
                 }}
             ></div>

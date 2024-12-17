@@ -7,11 +7,11 @@ import InOutBtn from "../components/InOutBtn";
 import Details from "../components/Detail";
 import Detail from "../components/Detail";
 import inOutBtn from "../components/InOutBtn";
-import data12 from "../dummyData/data_2024-12.json"
 
 
-const CalendarPage = ({currentMonth, nextMonth, prevMonth, nowMonth, activeTab, handleTabChange}) => {
-    const data = data12;
+
+const CalendarPage = ({data, currentMonth, nextMonth, prevMonth, nowMonth, activeTab, handleTabChange}) => {
+
     /* === State === */
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,16 +25,20 @@ const CalendarPage = ({currentMonth, nextMonth, prevMonth, nowMonth, activeTab, 
         setClickedDate(e.currentTarget.getAttribute('data-key'))
     }
 
-
     //전체 합 값 가져오기
     const calTotalCal = () => {
         let incomeTotal = 0
         let expenseTotal = 0
         let total = 0
-        data.forEach(item => {
-            item.inOut === "in" ? incomeTotal += item.amount : expenseTotal += item.amount;
-            item.inOut === "in" ? total += item.amount : total -= item.amount;
-        })
+        try{
+            data.forEach(item => {
+                item.type === 0 ? incomeTotal += item.amount : expenseTotal += item.amount;
+                item.type === 0 ? total += item.amount : total -= item.amount;
+            })
+        }
+        catch (e){
+            console.log(e)
+        }
         return {
             total,
             incomeTotal,
@@ -42,10 +46,13 @@ const CalendarPage = ({currentMonth, nextMonth, prevMonth, nowMonth, activeTab, 
         }
     }
 
-
-
     const dateData = () => {
-        return data.filter((item) => item.createdDate === clickedDate);
+        try {
+            return data.filter((item) => format (item.createdDate, 'yyyy-MM-dd') === format(clickedDate, 'yyyy-MM-dd'));
+        }
+        catch (e) {
+            return null
+        }
     }
 
 
@@ -137,13 +144,19 @@ const CalCells = ({currentMonth, selectedDate, handleDateClick, data, activeTab}
         let all = 0
         let income =0
         let expense = 0;
-        data.forEach((item) => {
-            const formattedDate = format(new Date(cellDate), "yyyy-MM-dd");
-            if(item["createdDate"] === formattedDate){
-                item.inOut === "in" ? income += item.amount : expense += item.amount;
-                item.inOut === "in" ? all += item.amount : all -= item.amount;
-            }
-        });
+        try{
+            data.forEach((item) => {
+                const formattedDate = format(new Date(cellDate), "yyyy-MM-dd");
+                if(format(item["createdDate"],'yyyy-MM-dd') === formattedDate){
+                    item.type === 0 ? income += item.amount : expense += item.amount;
+                    item.type === 0 ? all += item.amount : all -= item.amount;
+                }
+            });
+        }
+        catch (e) {
+            console.log(e);
+        }
+
 
         return {
             "all" : all,
@@ -181,10 +194,10 @@ const CalCells = ({currentMonth, selectedDate, handleDateClick, data, activeTab}
                         {formattedDate}
                     </span>
                     <div className="dateCount">
-                        {activeTab !== 'out' && dailyData.income !== 0 && (
+                        {activeTab !== 1 && dailyData.income !== 0 && (
                             <div className="dateTotal income">{dailyData.income}</div>
                         )}
-                        {activeTab !== 'in' &&dailyData.expense !== 0 && (
+                        {activeTab !== 0 &&dailyData.expense !== 0 && (
                             <div className="dateTotal expense">{dailyData.expense}</div>
                         )}
                         {activeTab === 'total'&&dailyData.all !== 0 && (
@@ -212,10 +225,15 @@ const SelectedDayDetail = ({handleDateClick, activeTab, data, handleTabChange}) 
         let incomeTotal = 0
         let expenseTotal = 0
         let total = 0
-        data.forEach(item => {
-            item.inOut === "in" ? incomeTotal += item.amount : expenseTotal += item.amount;
-            item.inOut === "in" ? total += item.amount : total -= item.amount;
-        })
+        try{
+            data.forEach(item => {
+                item.type === 0 ? incomeTotal += item.amount : expenseTotal += item.amount;
+                item.type === 0 ? total += item.amount : total -= item.amount;
+            })
+        }
+        catch (e){
+            console.log(e)
+        }
         return {
             total,
             incomeTotal,

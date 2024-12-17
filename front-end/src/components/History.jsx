@@ -1,4 +1,5 @@
 import './style/historySty.css'
+import {format} from "date-fns";
 
 // const History = () => {
 //     return (
@@ -14,9 +15,9 @@ import './style/historySty.css'
 // }
 
 const History = ({
-                     detailId,
+                     id,
                      amount,
-                     inOut,
+                     type,
                      category,
                      content,
                      createdDate,
@@ -30,12 +31,12 @@ const History = ({
                 type="checkbox"
                 className="row-checkbox"
                 checked={isChecked} // 개별 상태
-                onChange={() => onCheckboxChange(detailId)} // 상태 업데이트
+                onChange={() => onCheckboxChange(id)} // 상태 업데이트
             />
-            <div className="row-date">{createdDate}</div>
+            <div className="row-date">{format(createdDate,'yyyy-MM-dd')}</div>
             <div className="row-asset">{asset}</div>
             <div className="row-category">{category}</div>
-            <div className={`row-amount ${inOut === "in" ? "income" : "expense"}`}> {amount.toLocaleString()}원</div>
+            <div className={`row-amount ${type === 0 ? "income" : "expense"}`}> {amount.toLocaleString()}원</div>
             <div className="row-content">{content}</div>
         </div>
     );

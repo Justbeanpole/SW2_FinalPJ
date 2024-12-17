@@ -1,8 +1,9 @@
 import History from "./History";
 import './style/detailsty.css'
 import {useEffect, useState} from "react";
+import axios from "axios";
 
-const Detail = ({data, activeTab}) => {
+const Detail = ({fetchHistory,data, activeTab}) => {
     const [activeCategory, setActiveCategory] = useState(null)
     const [sortDirection, setSortDirection] = useState(null)
     const [checkedItems, setCheckedItems] = useState([]); // 체크된 아이템 ID 저장
@@ -28,9 +29,12 @@ const Detail = ({data, activeTab}) => {
     }
 
     const sortInOut = () => {
+        if (data === null || data === undefined) {
+            return  []
+        }
         return activeTab === "total"
             ? data
-            : data.filter((item) => item.inOut === activeTab)
+            : data.filter((item) => item.type === activeTab)
     }
 
     const sortDataFunc = () => {
@@ -43,7 +47,8 @@ const Detail = ({data, activeTab}) => {
                 ? sortInOut().sort((a, b) => b[activeCategory] - a[activeCategory])
                 : sortInOut().sort((a, b) => b[activeCategory].localeCompare(a[activeCategory]))
         } else {
-            return sortInOut().sort((a, b) => a["createdDate"].localeCompare(b["createdDate"]))
+
+            return sortInOut().sort((a, b) => new Date(a.createdDate) - new Date(b.createdDate))
         }
     }
     const handleCheckboxChange = (id) => {
@@ -60,15 +65,15 @@ const Detail = ({data, activeTab}) => {
             setCheckedItems([]);
         } else {
             // 모든 항목 선택
-            setCheckedItems(sortDataFunc().map((item) => item.detailId));
+            setCheckedItems(sortDataFunc().map((item) => item.id));
         }
     };
 
 
     // 체크 상태 동기화
     useEffect(() => {
-        const allIds = sortDataFunc().map((item) => item.detailId);
-        setIsAllChecked(allIds.every((detailId) => checkedItems.includes(detailId)));
+        const allIds = sortDataFunc().map((item) => item.id);
+        setIsAllChecked(allIds.every((id) => checkedItems.includes(id)));
     }, [checkedItems]);
     useEffect(() => {
         setCheckedItems([])
@@ -83,18 +88,20 @@ const Detail = ({data, activeTab}) => {
                 sortDirection={sortDirection}
                 handleActCategory={handleActCategory}
                 deterArrowDir={deterArrowDir}
-                checkedCount={checkedItems.length}
+                checkedItems={checkedItems}
                 handleToggleAll={handleToggleAll}
                 isAllChecked={isAllChecked}
                 data={sortDataFunc()}
+                fetchHistory={fetchHistory}
+                setCheckedItems={setCheckedItems}
             ></CategoryBar>
             <div className="historySection">
                 {sortDataFunc().map((item) => (
                     <History
                         {...item}
-                        key={item.detailId}
-                        isChecked={checkedItems.includes(item.detailId)}
-                        onCheckboxChange={() => handleCheckboxChange(item.detailId)}
+                        key={item.id}
+                        isChecked={checkedItems.includes(item.id)}
+                        onCheckboxChange={() => handleCheckboxChange(item.id)}
                     />
                 ))}
             </div>
@@ -108,14 +115,32 @@ const CategoryBar = ({
                          activeCategory,
                          deterArrowDir,
                          handleActCategory,
-                         checkedCount,
+                         checkedItems,
                          isAllChecked,
                          handleToggleAll,
-                         data
+                         data,
+                         fetchHistory,
+                         setCheckedItems
                      }) => {
+    const handleDelHistory = async () => {
+        try {
+            const response = await axios.post("http://localhost:8080/delDetail", {
+                params: {
+                    detailIid: checkedItems,
+                },
+            });
+            alert("삭제 성공")
+            console.log("삭제 성공:", response.data);
+            setCheckedItems([])
+            fetchHistory()
+        } catch (error) {
+            alert("삭제 실패")
+            console.error("삭제 실패:", error);
+        }
+    }
     return (
         <div className="middleSection">
-            {checkedCount > 0 ? (
+            {checkedItems.length > 0 ? (
                 <div className="selection-info">
                     <input
                         className="selection-info-input"
@@ -123,11 +148,11 @@ const CategoryBar = ({
                         checked={isAllChecked && data.length > 0} // 전체 선택 상태
                         onChange={handleToggleAll} // 전체 선택/해제
                     />
-                    <div>{checkedCount}개 선택했습니다.</div>
+                    <div>{checkedItems.length}개 선택했습니다.</div>
                     <div></div>
                     <div></div>
                     <div></div>
-                    <div className="material-symbols-outlined trash-button" onClick={() => console.log("삭제 버튼 클릭")}>
+                    <div className="material-symbols-outlined trash-button" onClick={handleDelHistory}>
                         delete
                     </div>
                 </div>

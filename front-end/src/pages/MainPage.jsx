@@ -1,25 +1,29 @@
 import Detail from '../components/Detail';
 import './pageSty/MP.css'
 import InOutBtn from "../components/InOutBtn";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {format} from "date-fns";
-import data_202411 from "../dummyData/data_2024-11.json"
-import data_202412 from "../dummyData/data_2024-12.json"
-import data_202501 from "../dummyData/data_2025-01.json"
+import axios from "axios";
 
 
-const MainPage = ({currentMonth, prevMonth, nextMonth, nowMonth, activeTab, handleTabChange}) => {
-    const data12 = data_202412;
+const MainPage = ({fetchHistory,data, currentMonth, prevMonth, nextMonth, nowMonth, activeTab, handleTabChange}) => {
+
 
     //전체 합 가져오기
     const totalCount = () => {
         let incomeTotal = 0
         let expenseTotal = 0
         let total = 0
-        data12.forEach(item => {
-            item.inOut === "in" ? incomeTotal += item.amount : expenseTotal += item.amount;
-            item.inOut === "in" ? total += item.amount : total -= item.amount;
-        })
+        try{
+            data.forEach(item => {
+                item.type === 0 ? incomeTotal += item.amount : expenseTotal += item.amount;
+                item.type === 0 ? total += item.amount : total -= item.amount;
+            })
+        }
+        catch (error) {
+            console.log(error);
+        }
+
         return {
             total,
             incomeTotal,
@@ -34,7 +38,7 @@ const MainPage = ({currentMonth, prevMonth, nextMonth, nowMonth, activeTab, hand
 
     const searchResHis = () => {
         return  searchContent === ""
-            ? data12 : data12.filter((item) => item.content.includes(searchContent))
+            ? data : data.filter((item) => item.content.includes(searchContent))
     }
 
 
@@ -56,6 +60,7 @@ const MainPage = ({currentMonth, prevMonth, nextMonth, nowMonth, activeTab, hand
             <Detail
                 data={searchResHis()}
                 activeTab={activeTab}
+                fetchHistory={fetchHistory}
             ></Detail>
         </div>
     )

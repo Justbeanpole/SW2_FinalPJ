@@ -6,19 +6,34 @@
     padding: 10px;
 
 }
+.header-statistics{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+.header-statistics>.btn-year{
+    padding-right: 2rem;
+}
 .inOutBtn{
     display: flex;
     flex-direction: row;
     font-size: 1.3rem;
     font-weight: bold;
     padding: 0 1rem;
+    align-items: center;
 }
 .inOutBtn>div{
     margin: 0 1rem;
+    cursor: pointer;
 }
-.inOutBtn>div:nth-child(1){
-    border-bottom: white 1px solid;
+.btn-year{
+    display: flex;
+    align-items: center;
 }
+.act-line{
+    border-bottom: 1px solid lightgray;
+}
+
 
 
 .contentSec{
@@ -46,6 +61,7 @@
     border-radius: 15px;
     padding: 1rem;
     box-sizing: border-box;
+    max-height: 430px;
 }
 .barGrap{
     width: 100%;
@@ -91,4 +107,9 @@
 }
 .dounot-middle>div{
     margin: 0 1rem;
+}
+.percent-list{
+    max-height: 370px;
+    overflow: auto;
+    overflow-x: hidden;
 }

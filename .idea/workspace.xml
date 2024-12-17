@@ -4,8 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="178f0c16-7016-42d9-905b-82fd6e73980f" name="Changes" comment="chore : node_modules 추가">
+    <list default="true" id="178f0c16-7016-42d9-905b-82fd6e73980f" name="Changes" comment="chore : axios 설치">
+      <change afterPath="$PROJECT_DIR$/back-end/Ledger/src/main/java/com/example/ledger/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/CategoryPercent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/style/categoryPercentSty.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/pages/OptionPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/pages/pageSty/optionSty.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/bin/www" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/db.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/public/stylesheets/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/routes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/routes/users.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/Detail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Detail.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/History.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/History.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/InOutBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/InOutBtn.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/MenuBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/MenuBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/SideBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/SideBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/style/headerSty.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/style/headerSty.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/style/menuSty.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/style/menuSty.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/CalendarPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/CalendarPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/MainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/MainPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/StatisticsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/StatisticsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/pages/pageSty/statisSty.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/pageSty/statisSty.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +45,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="JSX File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -44,28 +74,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/301/Desktop/dev/finalpj_sw2/front-end",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/301/Desktop/dev/finalpj_sw2&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.2.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\301\Desktop\dev\finalpj_sw2\front-end\src\pages" />
+      <recent name="C:\Users\301\Desktop\dev\finalpj_sw2\front-end\src\dummyData" />
       <recent name="C:\Users\301\Desktop\dev\finalpj_sw2\back-end" />
       <recent name="C:\Users\301\Desktop\dev\finalpj_sw2\src\components" />
       <recent name="C:\Users\301\Desktop\dev\finalpj_sw2\src\pages\pageSty" />
-      <recent name="C:\Users\301\Desktop\dev\finalpj_sw2\src\pages" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -96,110 +127,15 @@
       <workItem from="1734010040533" duration="1750000" />
       <workItem from="1734011819551" duration="1182000" />
       <workItem from="1734013273748" duration="823000" />
-    </task>
-    <task id="LOCAL-00003" summary="design : 불필요 style 정리">
-      <option name="closed" value="true" />
-      <created>1732884256244</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1732884256244</updated>
-    </task>
-    <task id="LOCAL-00004" summary="feat : 초기 리액트 화명 정리 밑 detail 컴포넌트 삽입">
-      <option name="closed" value="true" />
-      <created>1732884302155</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1732884302155</updated>
-    </task>
-    <task id="LOCAL-00005" summary="feat : detail html 구조 작성">
-      <option name="closed" value="true" />
-      <created>1732884343953</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1732884343953</updated>
-    </task>
-    <task id="LOCAL-00006" summary="design : flex, 가로 정렬">
-      <option name="closed" value="true" />
-      <created>1732884373582</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1732884373582</updated>
-    </task>
-    <task id="LOCAL-00007" summary="chore : iml, xml 추가 작성">
-      <option name="closed" value="true" />
-      <created>1732884439464</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1732884439464</updated>
-    </task>
-    <task id="LOCAL-00008" summary="first commit">
-      <option name="closed" value="true" />
-      <created>1732884461206</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1732884461206</updated>
-    </task>
-    <task id="LOCAL-00009" summary="feat : 내역 작성란 초기 html 구조 작성">
-      <option name="closed" value="true" />
-      <created>1732884495452</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1732884495452</updated>
-    </task>
-    <task id="LOCAL-00010" summary="style : 초기화 시 발생한 불필요 내용 삭제">
-      <option name="closed" value="true" />
-      <created>1732884559300</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1732884559300</updated>
-    </task>
-    <task id="LOCAL-00011" summary="feat: 메인페이지 제작">
-      <option name="closed" value="true" />
-      <created>1733389890928</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1733389890928</updated>
-    </task>
-    <task id="LOCAL-00012" summary="style : css 추가하기 위한 className 설정&#10;test : history 테스트를 위해 추가">
-      <option name="closed" value="true" />
-      <created>1733389962764</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1733389962764</updated>
-    </task>
-    <task id="LOCAL-00013" summary="style : detail 컴포넌트 스타일 적용">
-      <option name="closed" value="true" />
-      <created>1733390000776</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1733390000776</updated>
-    </task>
-    <task id="LOCAL-00014" summary="style : css적용을 위한 className 부여">
-      <option name="closed" value="true" />
-      <created>1733390035387</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1733390035387</updated>
-    </task>
-    <task id="LOCAL-00015" summary="style : history 스타일 적용">
-      <option name="closed" value="true" />
-      <created>1733390049818</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1733390049818</updated>
+      <workItem from="1734019098253" duration="325000" />
+      <workItem from="1734067350147" duration="12930000" />
+      <workItem from="1734083220408" duration="9746000" />
+      <workItem from="1734165642048" duration="14705000" />
+      <workItem from="1734247779599" duration="17112000" />
+      <workItem from="1734318274444" duration="518000" />
+      <workItem from="1734324526688" duration="15510000" />
+      <workItem from="1734410265270" duration="35153000" />
+      <workItem from="1734464997575" duration="897000" />
     </task>
     <task id="LOCAL-00016" summary="style : google icon 사용을 위한 Link 태그 추가">
       <option name="closed" value="true" />
@@ -489,24 +425,128 @@
       <option name="project" value="LOCAL" />
       <updated>1734011794536</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="feat : datePicker 기능 추가">
+      <option name="closed" value="true" />
+      <created>1734019180624</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1734019180624</updated>
+    </task>
+    <task id="LOCAL-00053" summary="chore : 이름 변경 및 datepicker 설치">
+      <option name="closed" value="true" />
+      <created>1734019214497</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1734019214497</updated>
+    </task>
+    <task id="LOCAL-00054" summary="refactor : 파일 리팩토링">
+      <option name="closed" value="true" />
+      <created>1734019270252</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1734019270252</updated>
+    </task>
+    <task id="LOCAL-00055" summary="refactor : 수입,지출,전체 버튼 App에서 관리로 변경">
+      <option name="closed" value="true" />
+      <created>1734180116927</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180116927</updated>
+    </task>
+    <task id="LOCAL-00056" summary="feat : 클릭시 날짜별 Histroy 생성, 날짜별 총합,">
+      <option name="closed" value="true" />
+      <created>1734180228112</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180228112</updated>
+    </task>
+    <task id="LOCAL-00057" summary="feat : 체크박스 기능 생성(전체 선택)&#10;refactor : 정렬 기능 이동">
+      <option name="closed" value="true" />
+      <created>1734180318986</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180318986</updated>
+    </task>
+    <task id="LOCAL-00058" summary="feat : 체크박스 기능 생성(전체 선택)&#10;refactor : 정렬 기능 이동">
+      <option name="closed" value="true" />
+      <created>1734180328377</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180328377</updated>
+    </task>
+    <task id="LOCAL-00059" summary="feat : 체크박스 기능 및 날짜별 history 생성 기능">
+      <option name="closed" value="true" />
+      <created>1734180361322</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180361322</updated>
+    </task>
+    <task id="LOCAL-00060" summary="feat : 체크박스 기능 및 날짜별 history 생성 기능">
+      <option name="closed" value="true" />
+      <created>1734180363603</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180363603</updated>
+    </task>
+    <task id="LOCAL-00061" summary="feat : 하루치, 달별 각 지출,수입,전체 별 총합 표현 기능">
+      <option name="closed" value="true" />
+      <created>1734180429049</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180429049</updated>
+    </task>
+    <task id="LOCAL-00062" summary="feat : total표현, 검색 기능, (수입,지출)따로 표현 기능">
+      <option name="closed" value="true" />
+      <created>1734180516195</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180516195</updated>
+    </task>
+    <task id="LOCAL-00063" summary="feat : props 설정">
+      <option name="closed" value="true" />
+      <created>1734180537645</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180537645</updated>
+    </task>
+    <task id="LOCAL-00064" summary="chore : axios 설치">
+      <option name="closed" value="true" />
+      <created>1734180552083</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1734180552083</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="style : 달력 스타일 적용" />
-    <MESSAGE value="refactor : 메인 페이지 헤더 컴포넌트로 나눔" />
-    <MESSAGE value="feat : 라우팅을 위해 BrowserRouter 태그 생성" />
-    <MESSAGE value="refactor :헤더, main content, menubar 컴포넌트로 나눔" />
-    <MESSAGE value="build : date-fns, react-router-dom 설치" />
-    <MESSAGE value="feat : 달력 cell 생성" />
-    <MESSAGE value="style : cell 스타일 적용" />
-    <MESSAGE value="refactor : 상단 수입 지출 버튼 component화" />
-    <MESSAGE value="style: 요소 선택 불가 설정" />
-    <MESSAGE value="feat : sidebar 열고 닫기 기능, 페이지 변경시 사이드바 닫기 기능, 버튼 클릭 시 날짜 변경 기능 구현" />
-    <MESSAGE value="feat : 달 변경 기능 구현, 날짜 cell 클릭 시 모달 구현, cell 내 전체, 수입, 지출 해당 금액 표시" />
     <MESSAGE value="style : modal 스타일 설정 및 기타 조정" />
     <MESSAGE value="feat : 카테고리 클릭 시 정렬사항 표시 기능,  CategoryBar 삭제 후 Detail에 포함" />
     <MESSAGE value="style : 카테고리 스타일 지정" />
@@ -521,6 +561,17 @@
     <MESSAGE value="chore : 초기생성" />
     <MESSAGE value="chore : first commit" />
     <MESSAGE value="chore : node_modules 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore : node_modules 추가" />
+    <MESSAGE value="feat : datePicker 기능 추가" />
+    <MESSAGE value="chore : 이름 변경 및 datepicker 설치" />
+    <MESSAGE value="refactor : 파일 리팩토링" />
+    <MESSAGE value="refactor : 수입,지출,전체 버튼 App에서 관리로 변경" />
+    <MESSAGE value="feat : 클릭시 날짜별 Histroy 생성, 날짜별 총합," />
+    <MESSAGE value="feat : 체크박스 기능 생성(전체 선택)&#10;refactor : 정렬 기능 이동" />
+    <MESSAGE value="feat : 체크박스 기능 및 날짜별 history 생성 기능" />
+    <MESSAGE value="feat : 하루치, 달별 각 지출,수입,전체 별 총합 표현 기능" />
+    <MESSAGE value="feat : total표현, 검색 기능, (수입,지출)따로 표현 기능" />
+    <MESSAGE value="feat : props 설정" />
+    <MESSAGE value="chore : axios 설치" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore : axios 설치" />
   </component>
 </project>
