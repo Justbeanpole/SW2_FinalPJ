@@ -4,39 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="178f0c16-7016-42d9-905b-82fd6e73980f" name="Changes" comment="chore : axios 설치">
-      <change afterPath="$PROJECT_DIR$/back-end/Ledger/src/main/java/com/example/ledger/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/CategoryPercent.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/style/categoryPercentSty.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/src/pages/OptionPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/src/pages/pageSty/optionSty.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/bin/www" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/db.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/public/stylesheets/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/routes/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/routes/users.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/Detail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Detail.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/History.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/History.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/InOutBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/InOutBtn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/MenuBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/MenuBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/SideBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/SideBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/style/headerSty.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/style/headerSty.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/style/menuSty.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/style/menuSty.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/CalendarPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/CalendarPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/MainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/MainPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/StatisticsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/StatisticsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/pages/pageSty/statisSty.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/pages/pageSty/statisSty.css" afterDir="false" />
-    </list>
+    <list default="true" id="178f0c16-7016-42d9-905b-82fd6e73980f" name="Changes" comment="style : favicon 변경" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,22 +104,7 @@
       <workItem from="1734324526688" duration="15510000" />
       <workItem from="1734410265270" duration="35153000" />
       <workItem from="1734464997575" duration="897000" />
-    </task>
-    <task id="LOCAL-00016" summary="style : google icon 사용을 위한 Link 태그 추가">
-      <option name="closed" value="true" />
-      <created>1733390073252</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1733390073252</updated>
-    </task>
-    <task id="LOCAL-00017" summary="feat : mainPage 제작">
-      <option name="closed" value="true" />
-      <created>1733390095603</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1733390095603</updated>
+      <workItem from="1734466500221" duration="822000" />
     </task>
     <task id="LOCAL-00018" summary="style : 메인페이지 스타일 적용">
       <option name="closed" value="true" />
@@ -529,7 +482,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734180552083</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="feat : 프로젝트 완료">
+      <option name="closed" value="true" />
+      <created>1734466606348</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1734466606348</updated>
+    </task>
+    <task id="LOCAL-00066" summary="style : favicon 변경">
+      <option name="closed" value="true" />
+      <created>1734466704845</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1734466704845</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,8 +516,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="style : modal 스타일 설정 및 기타 조정" />
-    <MESSAGE value="feat : 카테고리 클릭 시 정렬사항 표시 기능,  CategoryBar 삭제 후 Detail에 포함" />
     <MESSAGE value="style : 카테고리 스타일 지정" />
     <MESSAGE value="feat : 페이지에 맞는 헤더 이름 지정 기능" />
     <MESSAGE value="style : 주석 삭제" />
@@ -572,6 +539,8 @@
     <MESSAGE value="feat : total표현, 검색 기능, (수입,지출)따로 표현 기능" />
     <MESSAGE value="feat : props 설정" />
     <MESSAGE value="chore : axios 설치" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore : axios 설치" />
+    <MESSAGE value="feat : 프로젝트 완료" />
+    <MESSAGE value="style : favicon 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="style : favicon 변경" />
   </component>
 </project>
